@@ -156,12 +156,18 @@ alert("init.js loaded.");
 						sf.scene.hide('Scene1');
 						sf.scene.show('Scene3');
 						sf.scene.focus('Scene3');
+						$('#series').removeClass('selected');
+						$('#peliculas').addClass('selected')
+						$('#series3').addClass('selected');
 						$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
 					}
 					else if($('#actores').hasClass('selected')) {
 						sf.scene.hide('Scene1');
 						sf.scene.show('Scene5');
 						sf.scene.focus('Scene5');
+						$('#actores').removeClass('selected');
+						$('#peliculas').addClass('selected')
+						$('#actores5').addClass('selected');
 						$('#ventana5 span.btns1, #ventana5 span.btns2, #ventana5 div.col-xs-2').keynav();
 					}
 					else {
@@ -248,6 +254,9 @@ alert("init.js loaded.");
 						sf.scene.hide('Scene3');
 						sf.scene.show('Scene1');
 						sf.scene.focus('Scene1');
+						$('#peliculas3').removeClass('selected');
+						$('#series3').addClass('selected')
+						$('#peliculas').addClass('selected');
 						$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
 					}
 					else if($('#series3').hasClass('selected')) {
@@ -258,6 +267,9 @@ alert("init.js loaded.");
 						sf.scene.hide('Scene3');
 						sf.scene.show('Scene5');
 						sf.scene.focus('Scene5');
+						$('#actores3').removeClass('selected');
+						$('#series3').addClass('selected')
+						$('#actores5').addClass('selected');
 						$('#ventana5 span.btns1, #ventana5 span.btns2, #ventana5 div.col-xs-2').keynav();
 					}
 					else {
@@ -343,12 +355,18 @@ alert("init.js loaded.");
 						sf.scene.hide('Scene5');
 						sf.scene.show('Scene1');
 						sf.scene.focus('Scene1');
+						$('#peliculas5').removeClass('selected');
+						$('#actores5').addClass('selected')
+						$('#peliculas').addClass('selected');
 						$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
 					}
 					else if($('#series5').hasClass('selected')) {
 						sf.scene.hide('Scene5');
 						sf.scene.show('Scene3');
 						sf.scene.focus('Scene3');
+						$('#series5').removeClass('selected');
+						$('#actores5').addClass('selected')
+						$('#series3').addClass('selected');
 						$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
 					}
 					else if($('#actores5').hasClass('selected')) {
