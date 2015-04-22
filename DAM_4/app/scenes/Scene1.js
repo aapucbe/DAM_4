@@ -13,12 +13,14 @@ SceneScene1.prototype.initialize = function () {
 	session_id = localStorage.getItem('session_id');
 	alert(session_id);
 
-	$('#login').append('<button type="button" class="btn btn-default btn-lg">Login</button>');
-	$('#login').append('<button type="button" class="btn btn-default btn-lg">Resgistro</button>');
+	/*$('#login').append('<div class="btn"><button type="button" class="btn btn-default btn-lg">Login</button></div>');
+	$('#login').append('<div class="btn"><button type="button" class="btn btn-default btn-lg">Resgistro</button></div>');
 	
-	$('#menu').append('<button type="button" class="btn btn-default btn-lg">Peliculas</button>');
-	$('#menu').append('<button type="button" class="btn btn-default btn-lg">Series</button>');
-	$('#menu').append('<button type="button" class="btn btn-default btn-lg">Actores</button>');
+	$('#menu').append('<div class="btn"><button type="button" class="btn btn-default btn-lg">Peliculas</button></div>');
+	$('#menu').append('<div class="btn"><button type="button" class="btn btn-default btn-lg">Series</button></div>');
+	$('#menu').append('<div class="btn"><button type="button" class="btn btn-default btn-lg">Actores</button></div>');*/
+	
+	//$('#ventana div').keynav();
 	
 	alert(API+"/discover/movie?sort_by=popularity.desc&api_key="+api_key);
 	$.ajax({
@@ -30,22 +32,23 @@ SceneScene1.prototype.initialize = function () {
 	  success: function(data){
 	  	alert('success');
 	  	for (var i = 11; i >= 0; i--) {
-	  		if(i == 11) $("#populares").append('<div class="row"><h1>Populares</h1>');
+	  		if(i == 11) $("#movies").append('<div id="populares" class="row"><h1>Populares</h1>');
 	  		//if(i == 5) $("#movies").append('</div><div class="row">');
-	  		if(i == 0) $("#populares").append('</div>');
+	  		if(i == 0) $("#movies").append('</div>');
 	  		
-	  		$("#populares").append('<div class="col-xs-1" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+	  		$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
 	  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
 	  	}
 	  	
-	  	$('#movies div.col-xs-1').keynav();
+	  	$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
+	  	//$('#ventana div.col-xs-1').keynav();
 	  	//$('#movies div.col-xs-2').keynav();
 	  },
 	  error: function(){
 	  	alert('error');
 	  }
-	});	
-
+	});
+	
 };
 
 SceneScene1.prototype.handleShow = function (data) {

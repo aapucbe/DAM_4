@@ -134,19 +134,47 @@ alert("init.js loaded.");
 					setCurrent(x+1,y);
 					break;
 				case sf.key.ENTER:
-					movie_id = current.attr('href');
-					sf.scene.hide('Scene1');
-					sf.scene.show('Scene2');
-					sf.scene.focus('Scene2');
+					
+					if($('#log').hasClass('selected')) {
+						sf.scene.hide('Scene1');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');
+					}
+					else if($('#registro').hasClass('selected')) {
+						sf.scene.hide('Scene1');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');
+					}
+					else if($('#peliculas').hasClass('selected')) {
+						sf.scene.show('Scene1');
+						sf.scene.focus('Scene1');
+					}
+					else if($('#series').hasClass('selected')) {
+						sf.scene.hide('Scene1');
+						sf.scene.show('Scene3');
+						sf.scene.focus('Scene3');
+						$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
+					}
+					else if($('#actores').hasClass('selected')) {
+						sf.scene.hide('Scene1');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');
+					}
+					else {
+						movie_id = current.attr('href');
+						sf.scene.hide('Scene1');
+						sf.scene.show('Scene2');
+						sf.scene.focus('Scene2');
+					}
 					break;
-				case sf.key.TOOLS:
-					event.preventDefault();
-					sf.scene.hide('Scene1');
-					sf.scene.show('SceneLogin');
-					sf.scene.focus('SceneLogin');
-				default:
-					alert("handle default key event, key code(" + keyCode + ")");
-					break;
+					/*case sf.key.TOOLS:
+						event.preventDefault();
+						sf.scene.hide('Scene1');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');*/
+					default:
+						alert("handle default key event, key code(" + keyCode + ")");
+						break;
 			}
 		};
 
@@ -183,6 +211,99 @@ alert("init.js loaded.");
 		};
 
 
+		SceneScene3.prototype.handleKeyDown = function (keyCode) {
+			alert("SceneScene3.handleKeyDown(" + keyCode + ")");
+			// TODO : write an key event handler when this scene get focued
+			switch (keyCode) {
+				case sf.key.LEFT:
+					setCurrent(x,y-1);
+					break;
+				case sf.key.RIGHT:
+					setCurrent(x,y+1);
+					break;
+				case sf.key.UP:
+					setCurrent(x-1,y);
+					break;
+				case sf.key.DOWN:
+					setCurrent(x+1,y);
+					break;
+				case sf.key.ENTER:
+					
+					if($('#log3').hasClass('selected')) {
+						sf.scene.hide('Scene3');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');
+					}
+					else if($('#registro3').hasClass('selected')) {
+						sf.scene.hide('Scene3');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');
+					}
+					else if($('#peliculas3').hasClass('selected')) {
+						sf.scene.hide('Scene3');
+						sf.scene.show('Scene1');
+						sf.scene.focus('Scene1');
+						$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
+					}
+					else if($('#series3').hasClass('selected')) {
+						sf.scene.show('Scene3');
+						sf.scene.focus('Scene3');
+					}
+					else if($('#actores3').hasClass('selected')) {
+						sf.scene.hide('Scene3');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');
+					}
+					else {
+						tv_id = current.attr('href');
+						sf.scene.hide('Scene3');
+						sf.scene.show('Scene4');
+						sf.scene.focus('Scene4');
+					}
+					break;
+					/*case sf.key.TOOLS:
+						event.preventDefault();
+						sf.scene.hide('Scene1');
+						sf.scene.show('SceneLogin');
+						sf.scene.focus('SceneLogin');*/
+					default:
+						alert("handle default key event, key code(" + keyCode + ")");
+						break;
+			}
+		};
+		
+		SceneScene4.prototype.handleKeyDown = function (keyCode) {
+			alert("SceneScene4.handleKeyDown(" + keyCode + ")");
+			// TODO : write an key event handler when this scene get focued
+			switch (keyCode) {
+				case sf.key.RETURN:
+					event.preventDefault();
+					tv_id = '';
+					sf.scene.hide('Scene4');
+					sf.scene.show('Scene3');
+					sf.scene.focus('Scene3');
+					break;
+				case sf.key.N1:
+					puntuar(1*2);
+					break;
+				case sf.key.N2:
+					puntuar(2*2);
+					break;
+				case sf.key.N3:
+					puntuar(3*2);
+					break;
+				case sf.key.N4:
+					puntuar(4*2);
+					break;
+				case sf.key.N5:
+					puntuar(5*2);
+					break;
+				default:
+					alert("handle default key event, key code(" + keyCode + ")");
+					break;
+			}
+		};
+		
 		return this;
 	}
 
