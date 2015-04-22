@@ -1,4 +1,4 @@
-#SceneScene4 {
+#SceneScene6 {
 	position : absolute;
 	left : 0px;
 	top : 0px;
@@ -13,38 +13,38 @@
 	margin-bottom: 20px;
 }
 
-#movies3 img {
+#movies6 img {
 	width: 100%;
 	margin-top: 10px;
 }
 
-#movies3 .selected img {
+#movies6 .selected img {
 	-webkit-box-shadow: 0px 0px 0px 5px rgba(214,74,50,1);
 	-moz-box-shadow: 0px 0px 0px 5px rgba(214,74,50,1);
 	box-shadow: 0px 0px 0px 5px rgba(214,74,50,1);
 }
 
-#details4 {
+#details6 {
 	width: 100%;
 	height: 100%;
 }
 
-#details4 #content4 {
+#details6 #content6 {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(10,10,10,0.7);
 	color: #FFF;
 }
 
-#details4 #content4 img {
+#details6 #content6 img {
 	margin-top: 90px;
 }
 
-#details4 #content4 h1 {
+#details6 #content6 h1 {
 	margin-top: 150px;
 }
 
-#details4 #content4 h2 {
+#details6 #content6 h2 {
 	font-size: 1.6em;
 	margin-bottom: 40px;
 }

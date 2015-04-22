@@ -105,7 +105,7 @@ SceneSceneLogin.prototype.handleBlur = function () {
 	// this function will be called when the scene manager move focus to another scene from this scene
 };
 
-SceneSceneLogin.prototype.handleKeyDown = function (keyCode) {
+/*SceneSceneLogin.prototype.handleKeyDown = function (keyCode) {
 	alert("SceneSceneLogin.handleKeyDown(" + keyCode + ")");
 	// TODO : write an key event handler when this scene get focued
 	switch (keyCode) {
@@ -129,4 +129,4 @@ SceneSceneLogin.prototype.handleKeyDown = function (keyCode) {
 			alert("handle default key event, key code(" + keyCode + ")");
 			break;
 	}
-};
+};*/
