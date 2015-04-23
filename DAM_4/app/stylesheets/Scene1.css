@@ -52,6 +52,6 @@ button
 }
 
 .selected button {
-	background: blue;
-	color: white;
+	background: orange;
+	color: black;
 }

@@ -27,7 +27,14 @@ SceneScene2.prototype.handleShow = function (data) {
 	  	$("#cover").append('<img src="'+base_url+'w342'+data.poster_path+'"/>');
 	  	$("#title").append('<h1>'+data.title+'</h1>');
 	  	$("#title").append('<h2>'+data.tagline+'</h2>');
-	  	$("#sinopsis").append(data.overview);	  }
+	  	$("#estrella").append(data.vote_average);
+	  	$("#sinopsis").append(data.overview);
+	  	$("#anyo").append('Fecha de estreno: '+data.release_date);
+	  	$("#duracion").append('Duración: '+data.runtime+' min');
+	  	$("#presupuesto").append('Presupuesto: '+data.budget+'$');
+	  	$("#recaudacion").append('Recaudación: '+data.revenue+'$');
+	  	$("#genero").append('Género: '+data.genres[1].name);
+	  	}
 	});
 };
 
@@ -37,7 +44,13 @@ SceneScene2.prototype.handleHide = function () {
 	$("#cover").html('');
 	$("#title").html('');
 	$("#title").html('');
-	$("#sinopsis").html('');	
+	$("#estrella").html('');
+	$("#sinopsis").html('');
+	$("#anyo").html('');
+	$("#duracion").html('');
+	$("#presupuesto").html('');
+	$("#recaudacion").html('');
+	$("#genero").html('');
 };
 
 SceneScene2.prototype.handleFocus = function () {

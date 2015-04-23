@@ -26,6 +26,8 @@ SceneScene6.prototype.handleShow = function (data) {
 		  	//$("#details6").css('background-image', 'url(' + base_url+'w1280'+data.profile_path + ')');
 		  	$("#cover6").append('<img src="'+base_url+'w342'+data.profile_path+'"/>');
 		  	$("#title6").append('<h1>'+data.name+'</h1>');
+		  	$("#nacimiento6").append('<h2>Fecha de nacimiento: '+data.birthday+'</h2>');
+		  	$("#lugar6").append('<h2>Lugar de nacimiento: '+data.place_of_birth+'</h2>');
 		  	$("#sinopsis6").append(data.biography);	  }
 		});	
 };
