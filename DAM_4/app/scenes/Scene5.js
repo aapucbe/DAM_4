@@ -24,7 +24,7 @@ SceneScene5.prototype.initialize = function () {
 	  success: function(data){
 	  	alert('success');
 	  	for (var i = 11; i >= 0; i--) {
-	  		if(i == 11) $("#movies5").append('<div id="populares5" class="row"><h1>Populares</h1>');
+	  		if(i == 11) $("#movies5").append('<div id="populares5" class="row"><h1>Actores populares</h1>');
 	  		//if(i == 5) $("#movies").append('</div><div class="row">');
 	  		if(i == 0) $("#movies5").append('</div>');
 	  		
@@ -40,6 +40,7 @@ SceneScene5.prototype.initialize = function () {
 	  	alert('error');
 	  }
 	});
+	
 };
 
 SceneScene5.prototype.handleShow = function (data) {

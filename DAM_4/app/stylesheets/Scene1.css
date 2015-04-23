@@ -51,7 +51,7 @@ button
 	text-align: center;
 }
 
-.selected button{
+.selected button {
 	background: blue;
 	color: white;
 }

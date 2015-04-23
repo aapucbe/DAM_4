@@ -31,8 +31,8 @@ SceneScene1.prototype.initialize = function () {
 	  url: API+"/discover/movie?sort_by=popularity.desc&api_key="+api_key,
 	  success: function(data){
 	  	alert('success');
-	  	for (var i = 11; i >= 0; i--) {
-	  		if(i == 11) $("#movies").append('<div id="populares" class="row"><h1>Populares</h1>');
+	  	for (var i = 5; i >= 0; i--) {
+	  		if(i == 5) $("#movies").append('<div id="populares" class="row"><h1>Populares</h1>');
 	  		//if(i == 5) $("#movies").append('</div><div class="row">');
 	  		if(i == 0) $("#movies").append('</div>');
 	  		
@@ -48,6 +48,32 @@ SceneScene1.prototype.initialize = function () {
 	  	alert('error');
 	  }
 	});
+	
+	$.ajax({
+		  type: "GET",
+		  crossDomain: true,
+		  async: true,
+		  dataType: "json",
+		  url: API+"/movie/top_rated?api_key="+api_key,
+		  success: function(data){
+		  	alert('success');
+		  	for (var i = 5; i >= 0; i--) {
+		  		if(i == 5) $("#movies").append('<div id="mejorValoradas" class="row"><h1>Mejor valoradas</h1>');
+		  		//if(i == 5) $("#movies").append('</div><div class="row">');
+		  		if(i == 0) $("#movies").append('</div>');
+		  		
+		  		$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  	}
+		  	
+		  	$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
+		  	//$('#ventana div.col-xs-1').keynav();
+		  	//$('#movies div.col-xs-2').keynav();
+		  },
+		  error: function(){
+		  	alert('error');
+		  }
+		});
 	
 };
 
