@@ -25,11 +25,18 @@ SceneScene4.prototype.handleShow = function (data) {
 		  success: function(data){
 		  	$("#details4").css('background-image', 'url(' + base_url+'w1280'+data.backdrop_path + ')');
 		  	$("#cover4").append('<img src="'+base_url+'w342'+data.poster_path+'"/>');
+		  	$("#divEstrellas4").append('<span id="est14" class="glyphicon glyphicon-star-empty"></span>');
+		  	$("#divEstrellas4").append('<span id="est24" class="glyphicon glyphicon-star-empty"></span>');
+		  	$("#divEstrellas4").append('<span id="est34" class="glyphicon glyphicon-star-empty"></span>');
+		  	$("#divEstrellas4").append('<span id="est44" class="glyphicon glyphicon-star-empty"></span>');
+		  	$("#divEstrellas4").append('<span id="est54" class="glyphicon glyphicon-star-empty">&nbsp</span>');
+		  	$("#divEstrellas4").append(data.vote_average);
 		  	$("#title4").append('<h1>'+data.name+'</h1>');
 		  	$("#estrella4").append(data.vote_average);
 		  	$("#sinopsis4").append(data.overview);
 		  	$("#anyo4").append('Fecha de estreno: '+data.first_air_date);
 		  	$("#duracion4").append('Duración: '+data.episode_run_time[0]+' min');
+		  	$("#temporadas4").append('Temporadas: '+data.number_of_seasons);
 		  	$("#genero4").append('Género: '+data.genres[1].name);
 		  	}
 		});
@@ -39,12 +46,14 @@ SceneScene4.prototype.handleHide = function () {
 	alert("SceneScene4.handleHide()");
 	// this function will be called when the scene manager hide this scene
 	$("#cover4").html('');
+	$("#divEstrellas4").html('');
 	$("#title4").html('');
 	$("#title4").html('');
 	$("#estrella4").html('');
 	$("#sinopsis4").html('');
 	$("#anyo4").html('');
 	$("#duracion4").html('');
+	$("#temporadas4").html('');
 	$("#genero4").html('');
 };
 
@@ -77,7 +86,7 @@ SceneScene4.prototype.handleKeyDown = function (keyCode) {
 			break;
 	}
 };
-function puntuar (puntuacion) {
+/*function puntuar (puntuacion) {
 	$.ajax({
 	  type: "POST",
 	  crossDomain: true,
@@ -89,4 +98,4 @@ function puntuar (puntuacion) {
 	  	console.log(data);
 	  }
 	});
-};
+};*/

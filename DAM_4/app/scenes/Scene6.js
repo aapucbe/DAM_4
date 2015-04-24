@@ -26,8 +26,8 @@ SceneScene6.prototype.handleShow = function (data) {
 		  	//$("#details6").css('background-image', 'url(' + base_url+'w1280'+data.profile_path + ')');
 		  	$("#cover6").append('<img src="'+base_url+'w342'+data.profile_path+'"/>');
 		  	$("#title6").append('<h1>'+data.name+'</h1>');
-		  	$("#nacimiento6").append('<h2>Fecha de nacimiento: '+data.birthday+'</h2>');
-		  	$("#lugar6").append('<h2>Lugar de nacimiento: '+data.place_of_birth+'</h2>');
+		  	$("#nacimiento6").append('<p><strong>Fecha de nacimiento: '+data.birthday+'</strong></p>');
+		  	$("#lugar6").append('<p><strong>Lugar de nacimiento: '+data.place_of_birth+'</strong></p>');
 		  	$("#sinopsis6").append(data.biography);	  }
 		});	
 };
@@ -37,7 +37,8 @@ SceneScene6.prototype.handleHide = function () {
 	// this function will be called when the scene manager hide this scene
 	$("#cover6").html('');
 	$("#title6").html('');
-	$("#title6").html('');
+	$("#nacimiento6").html('');
+	$("#lugar6").html('');
 	$("#sinopsis6").html('');
 };
 
