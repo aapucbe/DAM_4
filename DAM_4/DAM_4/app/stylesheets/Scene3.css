@@ -1,0 +1,51 @@
+h1
+{
+	color: white;
+	margin-left: 10px;
+	margin-top: 0;
+}
+
+button
+{
+	margin: 10px;
+}
+
+#SceneScene3 {
+	position : absolute;
+	left : 0px;
+	top : 0px;
+	width : 1280px;
+	height : 720px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgba(10,10,10,1);
+	background-image : url('');
+}
+
+.row {
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+#movies3 img {
+	width: 100%;
+	margin-top: 10px;
+}
+
+#movies3 .selected img {
+	-webkit-box-shadow: 0px 0px 0px 5px rgba(214,74,50,1);
+	-moz-box-shadow: 0px 0px 0px 5px rgba(214,74,50,1);
+	box-shadow: 0px 0px 0px 5px rgba(214,74,50,1);
+}
+
+#login3{
+	text-align: right;
+}
+
+#menu3{
+	text-align: center;
+}
+
+.selected button{
+	background: orange;
+	color: black;
+}
