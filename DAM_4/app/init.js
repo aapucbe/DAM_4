@@ -3,6 +3,9 @@ var api_key = 'fffcfc6228ea5f968c308ea249b5a9eb';
 var session_id = '';
 var base_url = 'http://image.tmdb.org/t/p/';
 var movie_id = '';
+var posX = 0;
+var posX3 = 1;
+var posX5 = 1;
 
 function onStart () {
 	// TODO : Add your Initilize code here
@@ -130,10 +133,65 @@ alert("init.js loaded.");
 					setCurrent(x,y+1);
 					break;
 				case sf.key.UP:
-					setCurrent(x-1,y);
+					setCurrent(x-1,y);		
+					
+					posX--;
+					
+					if(posX == 4){
+						$('#enCartelera').show();
+						setCurrent(posX, 0);
+					}
+					if(posX == 3){
+						$('#mejorValoradas').show();
+						setCurrent(posX, 0);
+					}
+					if(posX == 2){
+						$('#populares').show();
+						setCurrent(posX, 0);
+					}
+					if(posX == 1){
+						setCurrent(posX, 0);
+					}
+					if(posX == -1){
+						posX = 0;
+						setCurrent(posX, 0);
+					}
+					
+					alert("posX: "+posX);
 					break;
 				case sf.key.DOWN:
-					setCurrent(x+1,y);
+					setCurrent(x+1,y);	
+					
+					/*if (posDOWN < 6 ) { posDOWN++; }*/
+					//posDOWN++;
+					//posUP = posDOWN;
+					
+					posX++;
+					
+					if(posX == 3){
+						$('#populares').hide();
+						setCurrent(posX, 0);
+					}
+					if(posX == 4){
+						$('#mejorValoradas').hide();
+						setCurrent(posX, 0);
+					}
+					if(posX == 5){
+						$('#enCartelera').hide();
+						setCurrent(posX, 0);
+					}
+					if(posX == 6){
+						$('#populares').show();
+						$('#mejorValoradas').show();
+						$('#enCartelera').show();
+						posX = 2;
+						//posUP = posX;
+						setCurrent(posX, 0);
+					}
+					
+					alert("posX: "+posX);
+					//alert("UP: "+posUP);
+					//alert("DOWN: "+posDOWN);					
 					break;
 				case sf.key.ENTER:
 					
@@ -157,7 +215,7 @@ alert("init.js loaded.");
 						sf.scene.show('Scene3');
 						sf.scene.focus('Scene3');
 						$('#series').removeClass('selected');
-						$('#peliculas').addClass('selected')
+						$('#peliculas').addClass('selected');
 						$('#series3').addClass('selected');
 						$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
 					}
@@ -166,7 +224,7 @@ alert("init.js loaded.");
 						sf.scene.show('Scene5');
 						sf.scene.focus('Scene5');
 						$('#actores').removeClass('selected');
-						$('#peliculas').addClass('selected')
+						$('#peliculas').addClass('selected');
 						$('#actores5').addClass('selected');
 						$('#ventana5 span.btns1, #ventana5 span.btns2, #ventana5 div.col-xs-2').keynav();
 					}
@@ -282,10 +340,53 @@ alert("init.js loaded.");
 					setCurrent(x,y+1);
 					break;
 				case sf.key.UP:
-					setCurrent(x-1,y);
+					setCurrent(x-1,y);						
+					
+					posX3--;
+					
+					if(posX3 == 3){
+						$('#mejorValoradas3').show();
+						setCurrent(posX3, 0);
+					}
+					if(posX3 == 2){
+						$('#populares3').show();
+						setCurrent(posX3, 0);
+					}
+					if(posX3 == 1){
+						setCurrent(posX3, 1);
+					}
+					if(posX3 == -1){
+						posX3 = 0;
+						setCurrent(posX3, 0);
+					}
+					
+					alert("posX: "+posX3);
+
 					break;
 				case sf.key.DOWN:
 					setCurrent(x+1,y);
+
+					posX3++;
+					
+					if(posX3 == 2){
+						setCurrent(posX3, 0);
+					}
+					if(posX3 == 3){
+						$('#populares3').hide();
+						setCurrent(posX3, 0);
+					}
+					if(posX3 == 4){
+						$('#mejorValoradas3').hide();
+						setCurrent(posX3, 0);
+					}
+					if(posX3 == 5){
+						$('#populares3').show();
+						$('#mejorValoradas3').show();
+						posX3 = 2;
+						setCurrent(posX3, 0);
+					}
+					
+					alert("posX: "+posX3);
 					break;
 				case sf.key.ENTER:
 					
@@ -305,7 +406,7 @@ alert("init.js loaded.");
 						sf.scene.show('Scene1');
 						sf.scene.focus('Scene1');
 						$('#peliculas3').removeClass('selected');
-						$('#series3').addClass('selected')
+						$('#series3').addClass('selected');
 						$('#peliculas').addClass('selected');
 						$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
 					}
@@ -318,7 +419,7 @@ alert("init.js loaded.");
 						sf.scene.show('Scene5');
 						sf.scene.focus('Scene5');
 						$('#actores3').removeClass('selected');
-						$('#series3').addClass('selected')
+						$('#series3').addClass('selected');
 						$('#actores5').addClass('selected');
 						$('#ventana5 span.btns1, #ventana5 span.btns2, #ventana5 div.col-xs-2').keynav();
 					}
@@ -434,9 +535,51 @@ alert("init.js loaded.");
 					break;
 				case sf.key.UP:
 					setCurrent(x-1,y);
+					
+					posX5--;
+					
+					if(posX5 == 3){
+						$('#lista2').show();
+						setCurrent(posX5, 0);
+					}
+					if(posX5 == 2){
+						$('#lista1').show();
+						setCurrent(posX5, 0);
+					}
+					if(posX5 == 1){
+						setCurrent(posX5, 2);
+					}
+					if(posX5 == -1){
+						posX5 = 0;
+						setCurrent(posX5, 0);
+					}
+					
+					alert("posX5: "+posX5);
 					break;
 				case sf.key.DOWN:
 					setCurrent(x+1,y);
+					
+					posX5++;
+					
+					if(posX5 == 2){
+						setCurrent(posX5, 0);
+					}
+					if(posX5 == 3){
+						$('#lista1').hide();
+						setCurrent(posX5, 0);
+					}
+					if(posX5 == 4){
+						$('#lista2').hide();
+						setCurrent(posX5, 0);
+					}
+					if(posX5 == 5){
+						$('#lista1').show();
+						$('#lista2').show();
+						posX5 = 2;
+						setCurrent(posX5, 0);
+					}
+					
+					alert("posX5: "+posX5);
 					break;
 				case sf.key.ENTER:
 					
@@ -456,7 +599,7 @@ alert("init.js loaded.");
 						sf.scene.show('Scene1');
 						sf.scene.focus('Scene1');
 						$('#peliculas5').removeClass('selected');
-						$('#actores5').addClass('selected')
+						$('#actores5').addClass('selected');
 						$('#peliculas').addClass('selected');
 						$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
 					}
@@ -465,7 +608,7 @@ alert("init.js loaded.");
 						sf.scene.show('Scene3');
 						sf.scene.focus('Scene3');
 						$('#series5').removeClass('selected');
-						$('#actores5').addClass('selected')
+						$('#actores5').addClass('selected');
 						$('#series3').addClass('selected');
 						$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
 					}

@@ -13,53 +13,80 @@ SceneScene3.prototype.initialize = function () {
 	session_id = localStorage.getItem('session_id');
 	alert(session_id);
 	
-	alert(API+"/discover/tv?sort_by=popularity.desc&api_key="+api_key);
-	$.ajax({
-	  type: "GET",
-	  crossDomain: true,
-	  async: true,
-	  dataType: "json",
-	  url: API+"/discover/tv?sort_by=popularity.desc&api_key="+api_key,
-	  success: function(data){
-	  	alert('success');
-	  	for (var i = 5; i >= 0; i--) {
-	  		if(i == 5) $("#movies3").append('<div id="populares3" class="row"><h1>Populares</h1>');
-	  		//if(i == 5) $("#movies").append('</div><div class="row">');
-	  		if(i == 0) $("#movies3").append('</div>');
-	  		
-	  		$("#movies3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
-	  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
-	  	}
-	  	
-	  	$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
-	  	//$('#ventana div.col-xs-1').keynav();
-	  	//$('#movies div.col-xs-2').keynav();
-	  },
-	  error: function(){
-	  	alert('error');
-	  }
-	});
-	
 	$.ajax({
 		  type: "GET",
 		  crossDomain: true,
 		  async: true,
 		  dataType: "json",
-		  url: API+"/tv/top_rated?api_key="+api_key,
+		  url: API+"/discover/tv?sort_by=popularity.desc&api_key="+api_key,
 		  success: function(data){
 		  	alert('success');
 		  	for (var i = 5; i >= 0; i--) {
-		  		if(i == 5) $("#movies3").append('<div id="mejorValoradas3" class="row"><h1>Mejor valoradas</h1>');
+		  		if(i == 5) $("#movies3").append('<div id="populares3" class="row"><h1>Populares</h1>');
 		  		//if(i == 5) $("#movies").append('</div><div class="row">');
 		  		if(i == 0) $("#movies3").append('</div>');
 		  		
-		  		$("#movies3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  		$("#populares3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
 		  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
 		  	}
 		  	
 		  	$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
 		  	//$('#ventana div.col-xs-1').keynav();
 		  	//$('#movies div.col-xs-2').keynav();
+		  	
+		  	$.ajax({
+				  type: "GET",
+				  crossDomain: true,
+				  async: true,
+				  dataType: "json",
+				  url: API+"/tv/top_rated?api_key="+api_key,
+				  success: function(data){
+				  	alert('success');
+				  	for (var i = 5; i >= 0; i--) {
+				  		if(i == 5) $("#movies3").append('<div id="mejorValoradas3" class="row"><h1>Mejor valoradas</h1>');
+				  		//if(i == 5) $("#movies").append('</div><div class="row">');
+				  		if(i == 0) $("#movies3").append('</div>');
+				  		
+				  		$("#mejorValoradas3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+				  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+				  	}
+				  	
+				  	$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
+				  	//$('#ventana div.col-xs-1').keynav();
+				  	//$('#movies div.col-xs-2').keynav();
+				  	
+				  	$.ajax({
+						  type: "GET",
+						  crossDomain: true,
+						  async: true,
+						  dataType: "json",
+						  url: API+"/tv/on_the_air?api_key="+api_key,
+						  success: function(data){
+						  	alert('success');
+						  	for (var i = 5; i >= 0; i--) {
+						  		if(i == 5) $("#movies3").append('<div id="enEmision3" class="row"><h1>En emision</h1>');
+						  		//if(i == 5) $("#movies").append('</div><div class="row">');
+						  		if(i == 0) $("#movies3").append('</div>');
+						  		
+						  		$("#enEmision3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+						  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+						  	}
+						  	
+						  	$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
+						  	//$('#ventana div.col-xs-1').keynav();
+						  	//$('#movies div.col-xs-2').keynav();
+						  },
+						  error: function(){
+						  	alert('error');
+						  }
+						});
+				  	
+				  },
+				  error: function(){
+				  	alert('error');
+				  }
+				});
+		  	
 		  },
 		  error: function(){
 		  	alert('error');
@@ -87,3 +114,88 @@ SceneScene3.prototype.handleBlur = function () {
 	alert("SceneScene3.handleBlur()");
 	// this function will be called when the scene manager move focus to another scene from this scene
 };
+
+function crearPopulares3() {
+	alert(API+"/discover/tv?sort_by=popularity.desc&api_key="+api_key);
+	$.ajax({
+	  type: "GET",
+	  crossDomain: true,
+	  async: true,
+	  dataType: "json",
+	  url: API+"/discover/tv?sort_by=popularity.desc&api_key="+api_key,
+	  success: function(data){
+	  	alert('success');
+	  	for (var i = 5; i >= 0; i--) {
+	  		if(i == 5) $("#movies3").append('<div id="populares3" class="row"><h1>Populares</h1>');
+	  		//if(i == 5) $("#movies").append('</div><div class="row">');
+	  		if(i == 0) $("#movies3").append('</div>');
+	  		
+	  		$("#populares3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+	  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+	  	}
+	  	
+	  	$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
+	  	//$('#ventana div.col-xs-1').keynav();
+	  	//$('#movies div.col-xs-2').keynav();
+	  },
+	  error: function(){
+	  	alert('error');
+	  }
+	});
+}
+
+function crearMejorValoradas3() {
+	$.ajax({
+		  type: "GET",
+		  crossDomain: true,
+		  async: true,
+		  dataType: "json",
+		  url: API+"/tv/top_rated?api_key="+api_key,
+		  success: function(data){
+		  	alert('success');
+		  	for (var i = 5; i >= 0; i--) {
+		  		if(i == 5) $("#movies3").append('<div id="mejorValoradas3" class="row"><h1>Mejor valoradas</h1>');
+		  		//if(i == 5) $("#movies").append('</div><div class="row">');
+		  		if(i == 0) $("#movies3").append('</div>');
+		  		
+		  		$("#mejorValoradas3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  	}
+		  	
+		  	$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
+		  	//$('#ventana div.col-xs-1').keynav();
+		  	//$('#movies div.col-xs-2').keynav();
+		  },
+		  error: function(){
+		  	alert('error');
+		  }
+		});
+}
+
+function crearEnEmision3() {
+	$.ajax({
+		  type: "GET",
+		  crossDomain: true,
+		  async: true,
+		  dataType: "json",
+		  url: API+"/tv/on_the_air?api_key="+api_key,
+		  success: function(data){
+		  	alert('success');
+		  	for (var i = 5; i >= 0; i--) {
+		  		if(i == 5) $("#movies3").append('<div id="enEmision3" class="row"><h1>En emision</h1>');
+		  		//if(i == 5) $("#movies").append('</div><div class="row">');
+		  		if(i == 0) $("#movies3").append('</div>');
+		  		
+		  		$("#enEmision3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  	}
+		  	
+		  	$('#ventana3 span.btns1, #ventana3 span.btns2, #ventana3 div.col-xs-2').keynav();
+		  	//$('#ventana div.col-xs-1').keynav();
+		  	//$('#movies div.col-xs-2').keynav();
+		  },
+		  error: function(){
+		  	alert('error');
+		  }
+		});
+}

@@ -10,7 +10,7 @@ SceneScene1.prototype.initialize = function () {
 	// initialize the scene controls and styles, and initialize your variables here
 	// scene HTML and CSS will be loaded before this function is called
 	alert(api_key);
-	session_id = localStorage.getItem('session_id');
+	//session_id = localStorage.getItem('session_id');
 	alert(session_id);
 
 	/*$('#login').append('<div class="btn"><button type="button" class="btn btn-default btn-lg">Login</button></div>');
@@ -22,53 +22,107 @@ SceneScene1.prototype.initialize = function () {
 	
 	//$('#ventana div').keynav();
 	
-	alert(API+"/discover/movie?sort_by=popularity.desc&api_key="+api_key);
-	$.ajax({
-	  type: "GET",
-	  crossDomain: true,
-	  async: true,
-	  dataType: "json",
-	  url: API+"/discover/movie?sort_by=popularity.desc&api_key="+api_key,
-	  success: function(data){
-	  	alert('success');
-	  	for (var i = 5; i >= 0; i--) {
-	  		if(i == 5) $("#movies").append('<div id="populares" class="row"><h1>Populares</h1>');
-	  		//if(i == 5) $("#movies").append('</div><div class="row">');
-	  		if(i == 0) $("#movies").append('</div>');
-	  		
-	  		$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
-	  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
-	  	}
-	  	
-	  	$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
-	  	//$('#ventana div.col-xs-1').keynav();
-	  	//$('#movies div.col-xs-2').keynav();
-	  },
-	  error: function(){
-	  	alert('error');
-	  }
-	});
-	
 	$.ajax({
 		  type: "GET",
 		  crossDomain: true,
 		  async: true,
 		  dataType: "json",
-		  url: API+"/movie/top_rated?api_key="+api_key,
+		  url: API+"/discover/movie?sort_by=popularity.desc&api_key="+api_key,
 		  success: function(data){
 		  	alert('success');
 		  	for (var i = 5; i >= 0; i--) {
-		  		if(i == 5) $("#movies").append('<div id="mejorValoradas" class="row"><h1>Mejor valoradas</h1>');
+		  		if(i == 5) $("#movies").append('<div id="populares" class="row"><h1>Populares</h1>');
 		  		//if(i == 5) $("#movies").append('</div><div class="row">');
 		  		if(i == 0) $("#movies").append('</div>');
 		  		
-		  		$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  		$("#populares").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
 		  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
 		  	}
 		  	
 		  	$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
 		  	//$('#ventana div.col-xs-1').keynav();
 		  	//$('#movies div.col-xs-2').keynav();
+		  	
+		  	$.ajax({
+		  	  type: "GET",
+		  	  crossDomain: true,
+		  	  async: true,
+		  	  dataType: "json",
+		  	  url: API+"/movie/top_rated?api_key="+api_key,
+		  	  success: function(data){
+		  	  	alert('success');
+		  	  	for (var i = 5; i >= 0; i--) {
+		  	  		if(i == 5) $("#movies").append('<div id="mejorValoradas" class="row"><h1>Mejor valoradas</h1>');
+		  	  		//if(i == 5) $("#movies").append('</div><div class="row">');
+		  	  		if(i == 0) $("#movies").append('</div>');
+		  	  		
+		  	  		$("#mejorValoradas").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  	  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  	  	}
+		  	  	
+		  	  	$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
+		  	  	//$('#ventana div.col-xs-1').keynav();
+		  	  	//$('#movies div.col-xs-2').keynav();
+		  	  	
+		  	  $.ajax({
+		  		  type: "GET",
+		  		  crossDomain: true,
+		  		  async: true,
+		  		  dataType: "json",
+		  		  url: API+"/movie/now_playing?api_key="+api_key,
+		  		  success: function(data){
+		  		  	alert('success');
+		  		  	for (var i = 5; i >= 0; i--) {
+		  		  		if(i == 5) $("#movies").append('<div id="enCartelera" class="row"><h1>En cartelera</h1>');
+		  		  		//if(i == 5) $("#movies").append('</div><div class="row">');
+		  		  		if(i == 0) $("#movies").append('</div>');
+		  		  		
+		  		  		$("#enCartelera").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  		  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  		  	}
+		  		  	
+		  		  	$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
+		  		  	//$('#ventana div.col-xs-1').keynav();
+		  		  	//$('#movies div.col-xs-2').keynav();
+		  		  	
+		  		  $.ajax({
+		  			  type: "GET",
+		  			  crossDomain: true,
+		  			  async: true,
+		  			  dataType: "json",
+		  			  url: API+"/movie/upcoming?api_key="+api_key,
+		  			  success: function(data){
+		  			  	alert('success');
+		  			  	for (var i = 5; i >= 0; i--) {
+		  			  		if(i == 5) $("#movies").append('<div id="proximamente" class="row"><h1>Proximamente</h1>');
+		  			  		//if(i == 5) $("#movies").append('</div><div class="row">');
+		  			  		if(i == 0) $("#movies").append('</div>');
+		  			  		
+		  			  		$("#proximamente").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  			  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  			  	}
+		  			  	
+		  			  	$('#ventana span.btns1, #ventana span.btns2, #ventana div.col-xs-2').keynav();
+		  			  	//$('#ventana div.col-xs-1').keynav();
+		  			  	//$('#movies div.col-xs-2').keynav();
+		  			  },
+		  			  error: function(){
+		  			  	alert('error');
+		  			  }
+		  			});
+		  		  	
+		  		  },
+		  		  error: function(){
+		  		  	alert('error');
+		  		  }
+		  		});
+		  	  	
+		  	  },  	  		  	  
+		  	  error: function(){
+		  	  	alert('error');
+		  	  }
+		  	});
+		  	
 		  },
 		  error: function(){
 		  	alert('error');

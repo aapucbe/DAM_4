@@ -14,32 +14,50 @@ SceneScene5.prototype.initialize = function () {
 	session_id = localStorage.getItem('session_id');
 	alert(session_id);
 	
-	alert(API+"/discover/movie?sort_by=popularity.desc&api_key="+api_key);
+	//crearActores();
+	
 	$.ajax({
-	  type: "GET",
-	  crossDomain: true,
-	  async: true,
-	  dataType: "json",
-	  url: API+"/person/popular?api_key="+api_key,
-	  success: function(data){
-	  	alert('success');
-	  	for (var i = 11; i >= 0; i--) {
-	  		if(i == 11) $("#movies5").append('<div id="populares5" class="row"><h1>Actores populares</h1>');
-	  		//if(i == 5) $("#movies").append('</div><div class="row">');
-	  		if(i == 0) $("#movies5").append('</div>');
-	  		
-	  		$("#movies5").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].profile_path+'"/></div>');
-	  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
-	  	}
-	  	
-	  	$('#ventana5 span.btns1, #ventana5 span.btns2, #ventana5 div.col-xs-2').keynav();
-	  	//$('#ventana div.col-xs-1').keynav();
-	  	//$('#movies div.col-xs-2').keynav();
-	  },
-	  error: function(){
-	  	alert('error');
-	  }
-	});
+		  type: "GET",
+		  crossDomain: true,
+		  async: true,
+		  dataType: "json",
+		  url: API+"/person/popular?api_key="+api_key,
+		  success: function(data){
+		  	alert('success');
+		  	$("#movies5").append('<div id="populares5" class="row"><h1>Actores populares</h1>');
+		  	$("#populares5").append('<div id="lista1" class="row">');
+		  	$("#populares5").append('<div id="lista2" class="row">');
+		  	$("#populares5").append('<div id="lista3" class="row">');
+		  	for (var i = 17; i >= 0; i--) {
+		  		//if(i == 17) $("#movies5").append('<div id="populares5" class="row"><h1>Actores populares</h1>');
+		  		//if(i == 5) $("#movies").append('</div><div class="row">');
+		  		//if(i == 0) $("#movies5").append('</div>');
+		  		
+		  		if (i <= 17 && i >= 12){
+		  			$("#lista1").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].profile_path+'"/></div>');
+		  		}
+		  		
+		  		if (i <= 11 && i >= 6){
+		  			$("#lista2").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].profile_path+'"/></div>');
+		  		}
+		  		
+		  		if (i <= 5 && i >= 0){
+		  			$("#lista3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].profile_path+'"/></div>');
+		  		}	  		
+		  		
+		  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+		  	}
+		  	
+		  	$("#movies5").append('</div>');
+		  	
+		  	$('#ventana5 span.btns1, #ventana5 span.btns2, #ventana5 div.col-xs-2').keynav();
+		  	//$('#ventana div.col-xs-1').keynav();
+		  	//$('#movies div.col-xs-2').keynav();
+		  },
+		  error: function(){
+		  	alert('error');
+		  }
+		});
 	
 };
 
@@ -62,3 +80,49 @@ SceneScene5.prototype.handleBlur = function () {
 	alert("SceneScene5.handleBlur()");
 	// this function will be called when the scene manager move focus to another scene from this scene
 };
+
+function crearActores() {
+	alert(API+"/discover/movie?sort_by=popularity.desc&api_key="+api_key);
+	$.ajax({
+	  type: "GET",
+	  crossDomain: true,
+	  async: true,
+	  dataType: "json",
+	  url: API+"/person/popular?api_key="+api_key,
+	  success: function(data){
+	  	alert('success');
+	  	$("#movies5").append('<div id="populares5" class="row"><h1>Actores populares</h1>');
+	  	$("#populares5").append('<div id="lista1" class="row">');
+	  	$("#populares5").append('<div id="lista2" class="row">');
+	  	$("#populares5").append('<div id="lista3" class="row">');
+	  	for (var i = 17; i >= 0; i--) {
+	  		//if(i == 17) $("#movies5").append('<div id="populares5" class="row"><h1>Actores populares</h1>');
+	  		//if(i == 5) $("#movies").append('</div><div class="row">');
+	  		//if(i == 0) $("#movies5").append('</div>');
+	  		
+	  		if (i <= 17 && i >= 12){
+	  			$("#lista1").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].profile_path+'"/></div>');
+	  		}
+	  		
+	  		if (i <= 11 && i >= 6){
+	  			$("#lista2").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].profile_path+'"/></div>');
+	  		}
+	  		
+	  		if (i <= 5 && i >= 0){
+	  			$("#lista3").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].profile_path+'"/></div>');
+	  		}	  		
+	  		
+	  		//$("#movies").append('<div class="col-xs-2" href="'+data.results[i].id+'"><img src="'+base_url+'w342'+data.results[i].poster_path+'"/></div>');
+	  	}
+	  	
+	  	$("#movies5").append('</div>');
+	  	
+	  	$('#ventana5 span.btns1, #ventana5 span.btns2, #ventana5 div.col-xs-2').keynav();
+	  	//$('#ventana div.col-xs-1').keynav();
+	  	//$('#movies div.col-xs-2').keynav();
+	  },
+	  error: function(){
+	  	alert('error');
+	  }
+	});
+}
